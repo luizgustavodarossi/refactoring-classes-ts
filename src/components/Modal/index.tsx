@@ -4,15 +4,15 @@ import ReactModal from 'react-modal';
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  children: ReactNode;
+  children: ReactNode
 }
 
-const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
+export default function Modal({ isOpen, setIsOpen, children }: ModalProps) {
   const [modalStatus, setModalStatus] = useState(isOpen);
 
   useEffect(() => {
-    if (modalStatus !== isOpen) setModalStatus(isOpen);
-  }, [isOpen, modalStatus]);
+    setModalStatus(isOpen);
+  }, [isOpen]);
 
   return (
     <ReactModal
@@ -42,6 +42,5 @@ const Modal = ({ isOpen, setIsOpen, children }: ModalProps) => {
       {children}
     </ReactModal>
   );
-};
+}
 
-export default Modal;
